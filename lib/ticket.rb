@@ -11,4 +11,8 @@ class Ticket
     def self.all
         @@all
     end
+
+    def self.find_tickets movie
+        @@all.filter{ |t| t.title == movie }.map{ |t| "Name: #{t.name}, #Price:#{t.price}" }
+    end
 end
