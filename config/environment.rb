@@ -4,7 +4,7 @@ require "bundler/setup"
 ENV["RACK_ENV"] ||= "development"
 
 Bundler.require(:default, ENV["RACK_ENV"])
-DB = SQLite3::Database.new("db/development.db")
+DB = SQLite3::Database.new("db/development.db") #Connects our app to the database
 DB.results_as_hash = true
 
 require "date"
