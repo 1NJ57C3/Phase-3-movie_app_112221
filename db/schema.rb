@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_14_172249) do
+ActiveRecord::Schema.define(version: 2022_01_18_201012) do
+
+  create_table "food", force: :cascade do |t|
+    t.string "food_name"
+    t.integer "price"
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
@@ -19,9 +24,21 @@ ActiveRecord::Schema.define(version: 2022_01_14_172249) do
     t.boolean "showing"
   end
 
+  create_table "receipt", force: :cascade do |t|
+    t.string "customer_name"
+  end
+
+  create_table "receipt_line_item", force: :cascade do |t|
+    t.integer "receipt_id"
+    t.integer "food_id"
+    t.index ["food_id"], name: "index_receipt_line_item_on_food_id"
+    t.index ["receipt_id"], name: "index_receipt_line_item_on_receipt_id"
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.string "name"
     t.float "price"
+    t.integer "movie_id"
   end
 
 end

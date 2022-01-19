@@ -1,0 +1,1 @@
+f1 = Food.create(food_name:'Hot Dogs')
